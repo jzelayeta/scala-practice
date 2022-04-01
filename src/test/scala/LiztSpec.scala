@@ -32,6 +32,33 @@ class LiztSpec extends AnyWordSpecLike with Matchers {
 
      Lizt(1,2,3).reverse() shouldBe Lizt(3,2,1)
    }
+
+   "filter integers" in {
+     val lizt = Lizt(1,2,3,4,5,6,7)
+
+     lizt.filter(elem => elem > 2) shouldBe Lizt(3,4,5,6,7)
+   }
+
+   "map elements" in {
+     val lizt = Lizt(1,2,3,4,5,6,7)
+
+     lizt.map(elem => elem * 2) shouldBe Lizt(2,4,6,8,10,12,14)
+   }
+
+   "fold" in {
+     val lizt = Lizt(1,2,3,4,5,6,7)
+
+     lizt.fold(0){(e1,e2) => e1 + e2} shouldBe 28
+   }
+
+   "flatMap" in {
+     val lizt = Lizt(Lizt(1,2,3), Lizt(4,5), Nilz)
+
+     lizt.flatMap(list => list.reverse()) shouldBe Lizt(3,2,1,5,4)
+   }
+
+
+
  }
 
 }
