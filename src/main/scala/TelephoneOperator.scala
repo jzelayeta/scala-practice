@@ -10,7 +10,6 @@ sealed trait CallAction {
 case class StartCall(callId: UUID= UUID.randomUUID()) extends CallAction
 case class EndCall(callId: UUID) extends CallAction
 
-
 sealed trait CallEvent {
   val callId: UUID
 }
