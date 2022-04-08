@@ -24,6 +24,11 @@ sealed trait Lizt[+A] { self: Lizt[A] => //self types
     case Nilz => Nilz
   }
 
+  def fold[B](seed: B)(f: (B, A) => B): B = self match {
+    case Conz(head, Nilz) => f(seed, head)
+    case Conz(head, tail) => f(tail.fold(seed)(f), head)
+    case Nilz => seed
+  }
 }
 
 case class Conz[A](head: A, tail: Lizt[A]) extends Lizt[A]

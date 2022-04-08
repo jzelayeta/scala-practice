@@ -32,7 +32,7 @@ class MoneySpec extends AnyWordSpecLike with Matchers {
     "add to other money" in {
       val otherMoney = new Money("ARS", 50)
       val newMoney = money.add(otherMoney)
-      newMoney.value shouldBe 250
+      newMoney.value shouldBe 150
     }
   }
 
